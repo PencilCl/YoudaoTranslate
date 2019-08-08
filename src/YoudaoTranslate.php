@@ -294,12 +294,10 @@ class YoudaoTranslate
      */
     private function getOpenQueryUrl($query)
     {
-        $api = 'https://openapi.youdao.com/api?from=auto&to=auto&';
+        $api = 'http://fanyi.youdao.com/openapi.do?keyfrom=WoxLauncher&key=1247918016&type=data&doctype=json&version=1.1&';
 
         $key = $this->keys[array_rand($this->keys)];
         $key['q'] = $query;
-        $key['salt'] = strval(rand(1,100000));
-        $key['sign'] = md5($key['appKey'] . $key['q'] . $key['salt'] . $key['secret']);
 
         return $api.http_build_query($key);
     }
